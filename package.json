@@ -1,0 +1,33 @@
+{
+  "name": "component-library",
+  "version": "1.0.0",
+  "description": "Component Library",
+  "main": "index.js",
+  "scripts": {
+    "copy:all": "npm run copy:package && npm run copy:build",
+    "copy:package": "gulp copy:package",
+    "copy:build": "gulp copy:build",
+    "clean": "rimraf build && rimraf dist",
+    "compile": "ngc -p src/lib/tsconfig-build.json",
+    "bundle": "rollup build/angular.js --o dist/angular.js -f umd --name 'ah-component-lib'",
+    "build": "npm run clean && npm run compile && npm run bundle && npm run copy:all",
+    "publish": "cd ./dist && npm publish"
+  },
+  "author": "Robert Broden",
+  "license": "ISC",
+  "dependencies": {
+    "@angular/compiler": "^5.1.2",
+    "@angular/core": "^5.1.2",
+    "rxjs": "^5.5.6",
+    "zone.js": "^0.8.18"
+  },
+  "devDependencies": {
+    "@angular/compiler-cli": "^5.1.2",
+    "gulp": "^3.9.1",
+    "gulp-sass": "^3.1.0",
+    "node-sass": "^4.7.2",
+    "rimraf": "^2.6.2",
+    "rollup": "^0.52.3",
+    "typescript": "~2.5.3"
+  }
+}
